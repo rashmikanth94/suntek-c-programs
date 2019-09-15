@@ -7,8 +7,8 @@ struct node
 }*start=NULL,*temp,*newnode;
 void push(int a);
 void pop();
-int a;
-
+int a,c=0;
+void Display();
 void main()
 {
     
@@ -28,11 +28,14 @@ void main()
                break;
         case 2:pop();      
                break;
+        case 3:Display();      
+               break;
     }
 }
 }
 void push(int da)
 {
+    c++;
     a=da;
     if(start==NULL)
     {
@@ -59,6 +62,7 @@ void pop()
     }
     else
     {
+        c--;
        int k= start->data;
         temp=temp->next;
         printf("\n%d node deleted",k);
@@ -66,3 +70,16 @@ void pop()
         start=temp;
     }
 }
+
+void Display()
+{
+    struct node* temp;
+    temp=start;
+    for(int i=0;temp->next!=NULL;i++)
+    {
+        printf("%d \n",temp->data);
+        temp=temp->next;
+    }
+    printf("%d  \nLENGTH is-----%d\n",temp->data,c);
+}
+
